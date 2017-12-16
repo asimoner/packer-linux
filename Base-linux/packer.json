@@ -1,5 +1,5 @@
 {
-  "_comment" : "Simple Packer Template using Amazon Linux 2017.03",
+  "_comment" : "Packer AMI For quinovas",
   "variables": {
     "aws_access_key": "AKIAIV4BIP7HLLWQ7WQA",
     "aws_secret_key": "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"
