@@ -1,0 +1,36 @@
+{
+  "_comment" : "Simple Packer Template using Amazon Linux 2017.03",
+  "variables": {
+    "aws_access_key": "AKIAIV4BIP7HLLWQ7WQA",
+    "aws_secret_key": "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"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "ap-south-1",
+    "source_ami": "ami-d5c18eba",
+    "instance_type": "t2.micro",
+    "ssh_username": "ec2-user",
+    "ami_name": "packerAMI-Quinovas-linux"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+	  "sudo yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setroubleshoot-server setools setools-console mcstrans -y",
+	  "sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config",
+	  "sleep 30",
+	  "sudo usermod -s /sbin/nologin root",
+	  "sudo yum -y update",
+	  "sudo /etc/init.d/acpid stop",
+	  "sudo /etc/init.d/atd stop",
+	  "sudo /etc/init.d/auditd stop",
+	  "sudo /etc/init.d/ip6tables stop",
+	  "sudo /etc/init.d/irqbalance stop",
+	  "sudo /etc/init.d/nfs stop",
+	  "sudo /etc/init.d/ntpd stop"
+    ]
+  }]
+}
+
+
