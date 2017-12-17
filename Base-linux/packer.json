@@ -1,7 +1,7 @@
 {
-  "_comment" : "Packer AMI For quinovas",
+  "_comment" : "Hardened linux ami for quinovas",
   "variables": {
-    "aws_access_key": "AKIAIV4BIP7HLLWQ7WQA",
+    "aws_access_key": "AKIAIQOL74TD2KGUQWDA",
     "aws_secret_key": "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"
   },
   "builders": [{
